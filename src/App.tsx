@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { fetchPosts } from "./store/reduсers/ActionCreators";
+// import { fetchPosts } from "./store/reduсers/ActionCreators";
+import { postsFetching } from "./store/reduсers/PostSlice";
 import { useAppDispatch, useAppSelector } from "./store/hooks/redux";
 import { Pagination } from "./components/Pagination/Pagination";
 
@@ -37,7 +38,8 @@ export const App: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(postsFetching());
+    // dispatch(fetchPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
