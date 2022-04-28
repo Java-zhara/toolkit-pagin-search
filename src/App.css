@@ -30,9 +30,28 @@
   column-gap: 20px;
 }
 
-.input {
+.search-sort .input {
   padding: 15px 15px;
   border: 1px solid teal;
+  width: 50%;
+}
+
+.search-sort {
+  display: flex;
   margin: 15px 0 0 15px;
-  width: 94%;
+  column-gap: 30px;
+  align-items: center;
+}
+
+.search-sort button {
+  color: white;
+  background-color: teal;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.search-sort button:hover {
+  background-color: rgb(76, 118, 118);
 }

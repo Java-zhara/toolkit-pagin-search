@@ -4,60 +4,68 @@ import { fetchPosts } from "./store/reduсers/ActionCreators";
 import { useAppDispatch, useAppSelector } from "./store/hooks/redux";
 import { Pagination } from "./components/Pagination/Pagination";
 
-import "./App.css";
 import { IPost } from "./store/types/IPost";
 
+import { sortedSomething, sortTypes } from "./utils/Sort";
+import { searchSomething } from "./utils/Search";
+import { pagination } from "./utils/Paginat";
+
+import "./App.css";
+
+const POST_PER_PAGE = 10;
+
 export const App: React.FC = () => {
-  const postsPerPage = 10;
   const dispatch = useAppDispatch();
   const { posts, isLoading, error } = useAppSelector(
     (state) => state.postReducer
   );
 
+  const [currentPagePost, setCurrentPagePost] = useState<IPost[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [valueTitle, setValueTitle] = useState("");
-  const [search, setSearch] = useState<IPost[]>([]);
-  const [currentPost, setCurrentPost] = useState<IPost[]>([]);
+  const [searchValue, setSearcValue] = useState("");
+  const [sortType, setSortType] = useState(sortTypes.DESC);
+  const [totalElements, setTotalElements] = useState(0);
 
-  const handleChangeValue = (e: any) => {
-    setValueTitle(e.target.value);
-    const searchTitle = posts.filter((postTitle) =>
-      postTitle.title
-        .toLowerCase()
-        .trim()
-        .includes(e.target.value.toLowerCase().trim())
-    );
-    setSearch(searchTitle);
-    setCurrentPage(1);
+  const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearcValue(e.target.value);
   };
 
-  useEffect(() => {
-    setSearch(posts);
-  }, [posts]);
-
-  useEffect(() => {
-    const lastPostIndex = currentPage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
-    setCurrentPost(search.slice(firstPostIndex, lastPostIndex));
-  }, [currentPage, search]);
+  const sortHandler = () => {
+    setSortType((prevSortType) =>
+      prevSortType === sortTypes.INC ? sortTypes.DESC : sortTypes.INC
+    );
+  };
 
   useEffect(() => {
     dispatch(fetchPosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const searchPosts = searchSomething(posts, searchValue);
+    setTotalElements(searchPosts.length);
+    const sortPosts = sortedSomething(searchPosts, sortType);
+    const paginationPosts = pagination(sortPosts, currentPage, POST_PER_PAGE);
+    setCurrentPagePost(paginationPosts);
+  }, [posts, currentPage, sortType, searchValue]);
+
   return (
     <div className="App">
       {isLoading && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
-      <input
-        className="input"
-        value={valueTitle}
-        type="text"
-        placeholder="Search..."
-        onChange={handleChangeValue}
-      />
-      {currentPost.map((post) => (
+      <div className="search-sort">
+        <input
+          className="input"
+          value={searchValue}
+          type="text"
+          placeholder="Search..."
+          onChange={handleChangeValue}
+        />
+        <button type="button" onClick={sortHandler}>
+          SORT
+        </button>
+      </div>
+      {currentPagePost.map((post) => (
         <div key={post.id} className="post">
           <span style={{ fontWeight: "bold" }}>{post.id}</span>
           <span>{post.title}</span>
@@ -65,7 +73,7 @@ export const App: React.FC = () => {
       ))}
       <Pagination
         currentPage={currentPage}
-        totalElements={search.length}
+        totalElements={totalElements}
         getPaginate={setCurrentPage}
       />
     </div>

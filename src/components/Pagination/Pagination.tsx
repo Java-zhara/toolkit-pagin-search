@@ -3,13 +3,13 @@ import classNames from "classnames";
 
 import "./Pagination.css";
 
-interface PaginationType {
+interface IPagination {
   currentPage: number;
   totalElements: number;
   getPaginate: (num: number) => void;
 }
 
-export const Pagination: React.FC<PaginationType> = ({
+export const Pagination: React.FC<IPagination> = ({
   currentPage,
   totalElements,
   getPaginate,

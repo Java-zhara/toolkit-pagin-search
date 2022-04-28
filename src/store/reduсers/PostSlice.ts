@@ -1,22 +1,22 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import type {IPost} from '../types/IPost'
-import {fetchPosts} from './ActionCreators'
+import type { IPost } from "../types/IPost";
+import { fetchPosts } from "./ActionCreators";
 
 interface UserState {
-  posts: IPost[]
-  isLoading: boolean
-  error: string
+  posts: IPost[];
+  isLoading: boolean;
+  error: string;
 }
 
 const initialState: UserState = {
   posts: [],
   isLoading: false,
-  error: '',
-}
+  error: "",
+};
 
 export const postSlice = createSlice({
-  name: 'post',
+  name: "post",
   initialState,
   reducers: {
     // postsFetching(state) {
@@ -34,19 +34,19 @@ export const postSlice = createSlice({
   },
   extraReducers: {
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<IPost[]>) => {
-      state.isLoading = false
-      state.error = ''
-      state.posts = action.payload
+      state.isLoading = false;
+      state.error = "";
+      state.posts = action.payload;
     },
     [fetchPosts.pending.type]: (state) => {
-      state.isLoading = true
+      state.isLoading = true;
     },
     [fetchPosts.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isLoading = false
-      state.error = action.payload
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
-})
+});
 
-export const postReducer = postSlice.reducer
+export const postReducer = postSlice.reducer;
 // export default postSlice.reducer
