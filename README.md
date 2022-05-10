@@ -1,1 +1,1 @@
-toolkit-pagin-search
+toolkit-pagin-search-sort
