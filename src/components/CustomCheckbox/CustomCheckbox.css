@@ -1,0 +1,35 @@
+label {
+  display: flex;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox:checked + .checkbox-new::after {
+  opacity: 1;
+}
+
+.checkbox-new {
+  height: 15px;
+  width: 15px;
+  border: 1px solid teal;
+  border-radius: 50%;
+  display: block;
+  margin-right: 15px;
+  position: relative;
+}
+
+.checkbox-new::after {
+  content:'';
+  height: 7px;
+  width: 7px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: teal;
+  transition: 0.3s all ease;
+  border-radius: 50%;
+  opacity: 0;
+}
