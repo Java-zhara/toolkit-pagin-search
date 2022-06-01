@@ -1,7 +1,7 @@
-import { IPost } from "../store/types/IPost";
+import { IPost } from '../store/types/IPost';
 
-export const searchSomething = (data: IPost[], searchData: string) => {
-  const param = "title"; // param: keyof IPost
+export const searchSomething = (data: IPost[], searchData: string): IPost[] => {
+  const param = 'title'; // param: keyof IPost
   const newSearchData = data.filter((item) => {
     return item[param].toLowerCase().includes(searchData.toLowerCase().trim());
   });

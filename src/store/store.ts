@@ -1,8 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import createSagaMiddleware from "redux-saga";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 
-import postReducer from "./reduсers/PostSlice";
-import { rootSaga } from "./root-saga";
+import postReducer from './reduсers/PostSlice';
+import { rootSaga } from './root-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,8 +12,7 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { IPost } from "../types/IPost";
+import type { IPost } from '../types/IPost';
 // import { fetchPosts } from "./ActionCreators";
 
 interface UserState {
@@ -12,11 +12,11 @@ interface UserState {
 const initialState: UserState = {
   posts: [],
   isLoading: false,
-  error: "",
+  error: '',
 };
 
 export const postSlice = createSlice({
-  name: "post",
+  name: 'post',
   initialState,
   reducers: {
     postsFetching(state) {
@@ -24,7 +24,7 @@ export const postSlice = createSlice({
     },
     postsFetchingSuccess(state, action: PayloadAction<IPost[]>) {
       state.isLoading = false;
-      state.error = "";
+      state.error = '';
       state.posts = action.payload;
     },
     postsFetchingError(state, action: PayloadAction<string>) {
@@ -51,7 +51,6 @@ export const postSlice = createSlice({
 // export const postReducer = postSlice.reducer;
 // export default postSlice.reducer
 
-export const { postsFetching, postsFetchingSuccess, postsFetchingError } =
-  postSlice.actions;
+export const { postsFetching, postsFetchingSuccess, postsFetchingError } = postSlice.actions;
 
 export default postSlice.reducer;

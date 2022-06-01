@@ -6,10 +6,6 @@ label {
   display: none;
 }
 
-.checkbox:checked + .checkbox-new::after {
-  opacity: 1;
-}
-
 .checkbox-new {
   height: 15px;
   width: 15px;
@@ -21,7 +17,7 @@ label {
 }
 
 .checkbox-new::after {
-  content:'';
+  content: '';
   height: 7px;
   width: 7px;
   position: absolute;
@@ -32,4 +28,8 @@ label {
   transition: 0.3s all ease;
   border-radius: 50%;
   opacity: 0;
+}
+
+.checkbox:checked + .checkbox-new::after {
+  opacity: 1;
 }

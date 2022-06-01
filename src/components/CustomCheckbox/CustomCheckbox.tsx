@@ -1,13 +1,13 @@
-import "./CustomCheckbox.css";
+import './CustomCheckbox.css';
 
-export const CustomCheckbox = () => {
+export const CustomCheckbox = (): JSX.Element => {
   return (
     <>
-      <label>
-        <input type="checkbox" className="checkbox" />
-        <span className="checkbox-new"></span>
+      <label htmlFor='custom-checkbox'>
+        <input id='custom-checkbox' type='checkbox' className='checkbox' />
+        <span className='checkbox-new' />
         <span>кастомный чекбокс</span>
       </label>
     </>
-  )
-}
+  );
+};

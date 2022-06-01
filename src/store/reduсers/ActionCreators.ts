@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // import {AppDispatch} from './../store'
 
 // import {postSlice} from './PostSlice'
 
-import type {IPost} from '../types/IPost'
-import {createAsyncThunk} from '@reduxjs/toolkit'
+import type { IPost } from '../types/IPost';
 
 // export const fetchUsers = () => async (dispatch: AppDispatch) => {
 //   try {
@@ -19,16 +19,11 @@ import {createAsyncThunk} from '@reduxjs/toolkit'
 //   }
 // }
 
-export const fetchPosts = createAsyncThunk(
-  'user/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get<IPost[]>(
-        'https://jsonplaceholder.typicode.com/posts'
-      )
-      return response.data
-    } catch (e) {
-      return thunkAPI.rejectWithValue('Не удалось загрузить посты')
-    }
+export const fetchPosts = createAsyncThunk('user/fetchAll', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get<IPost[]>('https://jsonplaceholder.typicode.com/posts');
+    return response.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue('Не удалось загрузить посты');
   }
-)
+});
