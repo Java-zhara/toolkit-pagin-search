@@ -43,7 +43,7 @@ export const App = (): JSX.Element => {
     const searchPosts = searchSomething(posts, searchValue);
     setTotalElements(searchPosts.length);
     const sortPosts = sortedSomething(searchPosts, sortType);
-    const paginationPosts = pagination(sortPosts, currentPage);
+    const paginationPosts = pagination(sortPosts, currentPage, POST_PER_PAGE);
     setCurrentPagePost(paginationPosts);
   }, [posts, currentPage, sortType, searchValue]);
 
