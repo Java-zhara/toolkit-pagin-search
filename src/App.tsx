@@ -65,6 +65,7 @@ export const App = (): JSX.Element => {
         </div>
       ))}
       <Pagination currentPage={currentPage} totalElements={totalElements} getPaginate={setCurrentPage} />
+      {/* <Pagination currentPage={currentPage} totalElements={totalElements} getPaginate={setCurrentPage} /> */}
     </div>
   );
 };
