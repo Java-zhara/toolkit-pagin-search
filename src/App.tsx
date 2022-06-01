@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// import { fetchPosts } from "./store/reduсers/ActionCreators";
+// import { fetchPosts } from './store/reduсers/ActionCreators';
 import { postsFetching } from './store/reduсers/PostSlice';
 import { useAppDispatch, useAppSelector } from './store/hooks/redux';
 import { Pagination } from './components/Pagination/Pagination';
