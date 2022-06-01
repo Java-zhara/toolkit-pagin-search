@@ -77,6 +77,11 @@
     "stylelint-prettier": "^1.2.0",
     "stylelint-scss": "^3.20.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
