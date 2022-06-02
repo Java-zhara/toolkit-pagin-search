@@ -12,7 +12,7 @@ import { sortedSomething, sortTypes } from './utils/Sort';
 import { searchSomething } from './utils/Search';
 import { pagination } from './utils/Paginat';
 
-import './App.css';
+import './App.scss';
 
 const POST_PER_PAGE = 10;
 
@@ -65,7 +65,6 @@ export const App = (): JSX.Element => {
         </div>
       ))}
       <Pagination currentPage={currentPage} totalElements={totalElements} getPaginate={setCurrentPage} />
-      {/* <Pagination currentPage={currentPage} totalElements={totalElements} getPaginate={setCurrentPage} /> */}
     </div>
   );
 };

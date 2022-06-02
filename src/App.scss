@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.post {
+  padding: 20px;
+  border: 1px solid teal;
+  margin: 15px;
+  display: flex;
+  column-gap: 20px;
+}
+
+.search-sort {
+  display: flex;
+  margin: 15px 0 0 15px;
+  column-gap: 30px;
+  align-items: center;
+
+  .input {
+    padding: 15px 15px;
+    border: 1px solid teal;
+    width: 50%;
+  }
+
+  button {
+    color: white;
+    background-color: teal;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(76, 118, 118);
+    }
+  }
+}

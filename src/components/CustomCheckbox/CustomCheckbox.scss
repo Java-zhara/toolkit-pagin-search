@@ -14,20 +14,20 @@ label {
   display: block;
   margin-right: 15px;
   position: relative;
-}
 
-.checkbox-new::after {
-  content: '';
-  height: 7px;
-  width: 7px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: teal;
-  transition: 0.3s all ease;
-  border-radius: 50%;
-  opacity: 0;
+  &::after {
+    content: '';
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: teal;
+    transition: 0.3s all ease;
+    border-radius: 50%;
+    opacity: 0;
+  }
 }
 
 .checkbox:checked + .checkbox-new::after {

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
 
-import './Pagination.css';
+import './Pagination.scss';
 
 interface IPagination {
   currentPage: number;

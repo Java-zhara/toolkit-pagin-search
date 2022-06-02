@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  margin-left: 15px;
+
+  .page-btn {
+    padding: 5px;
+    cursor: pointer;
+
+    .active {
+      background-color: #b8b2b2;
+    }
+  }
+
+  &:hover {
+    background-color: #ddd6d6;
+  }
+}
